@@ -4,100 +4,155 @@ import axios from 'axios'
 
 import styles from './SearchView.scss';
 
-import GenresContentView from "../GenresContentView/GenresContentView.jsx";
+import ResultListView from "../ResultListView/ResultListView.jsx";
 
 class SearchView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeItem: '',
-            activeGenreId: 0,
-            movieGenres: {},
-            movies: {}
+            movieName: '',
+            movies: {},
+            sortBy: 'Name',
+            sortIn: 'Ascending'
         };
 
-        this.handleItemClick = this.handleItemClick.bind(this);
-
+        this.searchUrl = 'https://api.themoviedb.org/3/search/movie?api_key=2ba1defe49928fa3f6b38c04f378cd89&language=en-US';
+        this.inputChangeHandler = this.inputChangeHandler.bind(this);
+        this.sortByChangeHandler = this.sortByChangeHandler.bind(this);
+        this.sortInChangeHandler = this.sortInChangeHandler.bind(this);
     }
 
-    componentWillMount() {
-        let getGenresUrl = 'https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=2ba1defe49928fa3f6b38c04f378cd89';
-        axios.get(getGenresUrl)
-            .then((response) => {
-                this.setState({
-                    movieGenres: response.data.genres
-                });
+    inputChangeHandler(event) {
+        let searchKeyword = event.target.value;
 
-            }).catch((error) => {
-            console.log(error);
-        });
-
-
-
-            let getAllUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=2ba1defe49928fa3f6b38c04f378cd89&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1';
-            axios.get(getAllUrl)
+        if (searchKeyword !== '') {
+            let url = this.searchUrl + "&query=" + searchKeyword;
+            axios.get(url)
                 .then((response) => {
                     this.setState({
+                        movieName : searchKeyword,
                         movies: response.data.results
                     });
-
                 }).catch((error) => {
                 console.log(error);
+            })
+        } else {
+            this.setState({
+                movies: {}
             });
-
+        }
     }
 
-    handleItemClick(event, { name, id }){
-        let newGenreId = id;
+    sortResults(sortBy, sortIn) {
+        let sortedMovies = this.state.movies;
+        if ((Object.keys(sortedMovies).length === 0)) {
+            console.log("empty no need to sort")
+            return;
+        }
+        // sort movies
+        if (sortBy === "Name") {
+            sortedMovies.sort(function(a, b) {
+                if (sortIn === "Ascending") {
+                    return a.title.localeCompare(b.title);
+                }
+                return b.title.localeCompare(a.title);
+            });
+        } else {
+            sortedMovies.sort(function(a, b) {
+                if (sortIn === "Ascending") {
+                    return a.popularity - b.popularity;
+                }
+                return b.popularity - a.popularity;
+            });
+        }
+
         this.setState({
-            activeItem: name,
-            activeGenreId: newGenreId
+            movies: sortedMovies
         });
 
-        let getMoviesUrl = 'https://api.themoviedb.org/3/genre/' + newGenreId + '/movies?api_key=2ba1defe49928fa3f6b38c04f378cd89&language=en-US&include_adult=false&sort_by=vote_average.desc';
-
-        axios.get(getMoviesUrl)
-            .then((response) => {
-                this.setState({
-                    movies: response.data.results
-                });
-
-            }).catch((error) => {
-            console.log(error);
-        });
     }
 
+    sortByChangeHandler(event, data) {
+        console.log("change sort by");
 
+        let sortBy = data.text;
+        let sortIn = this.state.sortIn;
+
+        this.sortResults(sortBy, sortIn);
+
+        this.setState({
+            sortBy: data.text
+        });
+
+
+    }
+
+    sortInChangeHandler(event, data) {
+        console.log("change sort in");
+        let sortBy = this.state.sortBy;
+        let sortIn = data.value;
+
+        this.sortResults(sortBy, sortIn);
+
+        this.setState({
+            sortIn: data.value
+        });
+    }
 
     render() {
-        let noResult = (Object.keys(this.state.movieGenres).length === 0);
-        if (noResult) {
-            return (
-                <div/>
-            )
-        }
-        let genresListItem = this.state.movieGenres.map((result, idx) => {
-            let genreName = result.name;
-            let genreId = result.id;
-            return (
-                <Menu.Item key={idx} name={genreName} id={genreId} active={this.state.activeItem === genreName} onClick={this.handleItemClick} />
-            )
-        });
-
         return(
-            <Grid>
-                <Grid.Column width={4}>
-                    <Menu fluid vertical tabular>
-                        {genresListItem}
-                    </Menu>
-                </Grid.Column>
+            <div className="Search">
+                <h1 className="Search_header">Let's GET us a List of Movies!</h1>
 
-                <Grid.Column stretched width={12}>
-                    <Segment className="gallerySegment">
-                        <GenresContentView moviesList={this.state.movies}/>
-                    </Segment>
-                </Grid.Column>
-            </Grid>
+                <div className="searchContainer">
+                    <Input
+                        className="Input"
+                        onChange={this.inputChangeHandler}
+                        placeholder='Search for movies'
+                    />
+
+                    <div className="SortByDropdown">
+                        <span>Sort By: </span>
+                        <Dropdown className="dropdown" defaultValue="Name" text={this.state.sortBy} button >
+                            <Dropdown.Menu className="dropdown">
+                                <Dropdown.Item text="Name" onClick={this.sortByChangeHandler} />
+                                <Dropdown.Item text="Popularity" onClick={this.sortByChangeHandler} />
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
+                </div>
+
+
+
+
+                <Form className="SortInCheckBox">
+                    <Form.Field className="checkBoxField">
+                        <span>Sort in: {this.state.sortIn}</span>
+                    </Form.Field>
+                    <Form.Field className="checkBoxField">
+                        <Checkbox
+                            radio
+                            label='Ascending'
+                            name='checkboxRadioGroup'
+                            value='Ascending'
+                            checked={this.state.sortIn === 'Ascending'}
+                            onChange={this.sortInChangeHandler}
+                        />
+                    </Form.Field>
+                    <Form.Field className="checkBoxField">
+                        <Checkbox
+                            radio
+                            label='Descending'
+                            name='checkboxRadioGroup'
+                            value='Descending'
+                            checked={this.state.sortIn === 'Descending'}
+                            onChange={this.sortInChangeHandler}
+                        />
+                    </Form.Field>
+                </Form>
+
+                <ResultListView resultList={this.state.movies}/>
+            </div>
         )
     }
 }
