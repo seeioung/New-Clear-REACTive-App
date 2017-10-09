@@ -6,6 +6,10 @@ import 'semantic-ui-css/semantic.min.css';
 
 // Include your new Components here
 import Home from './components/Home/Home.jsx';
+import ListView from './components/ListView/ListView.jsx';
+import GalleryView from './components/GalleryView/GalleryView.jsx';
+import DetailsView from './components/DetailsView/DetailsView.jsx';
+import RouterView from './RouterView.jsx'
 
 // Include any new stylesheets here
 // Note that components' stylesheets should NOT be included here.
