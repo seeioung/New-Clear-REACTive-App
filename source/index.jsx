@@ -15,7 +15,7 @@ import RouterView from './RouterView.jsx'
 require('./styles/main.scss');
 
 render(
-    <Home />,
+    <RouterView />,
     // Define your router and replace <Home /> with it!
     document.getElementById('app')
 );

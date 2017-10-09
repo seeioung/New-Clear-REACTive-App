@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import {  Menu, Segment} from 'semantic-ui-react'
 import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
 
+import Home from './components/Home/Home.jsx';
 import ListView from './components/ListView/ListView.jsx';
 import GalleryView from './components/GalleryView/GalleryView.jsx';
 import DetailsView from './components/DetailsView/DetailsView.jsx';
