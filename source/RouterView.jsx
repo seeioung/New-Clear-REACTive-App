@@ -3,8 +3,7 @@ import React, { Component } from 'react'
 import {  Menu, Segment} from 'semantic-ui-react'
 import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
 
-import Home from './components/Home/Home.jsx';
-import ListView from './components/ListView/ListView.jsx';
+// import ListView from './components/ListView/ListView.jsx';
 import GalleryView from './components/GalleryView/GalleryView.jsx';
 import DetailsView from './components/DetailsView/DetailsView.jsx';
 
@@ -59,7 +58,7 @@ class RouterView extends Component {
 
                     <div>
                         <Switch>
-                            <Route exact path='/' component={ListView}/>
+                            <Route exact path='/' component={GalleryView}/>
                             <Route exact path='/gallery' component={GalleryView}/>
                             <Route path='/details/:value' component={DetailsView}/>
                             <Route render = {function(){
