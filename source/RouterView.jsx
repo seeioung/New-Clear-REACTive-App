@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { Button, Input, Dropdown, Form, Checkbox, Label, Menu, Tab, Segment} from 'semantic-ui-react'
+import {  Menu, Segment} from 'semantic-ui-react'
 import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
 import axios from 'axios'
 
