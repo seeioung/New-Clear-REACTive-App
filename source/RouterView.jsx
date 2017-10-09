@@ -1,9 +1,8 @@
-
+import PropTypes from 'prop-types';
 import React, { Component } from 'react'
 import {  Menu, Segment, Message} from 'semantic-ui-react'
 import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
 
-// import ListView from './components/ListView/ListView.jsx';
 import SearchView from './components/SearchView/SearchView.jsx';
 import GalleryView from './components/GalleryView/GalleryView.jsx';
 import DetailsView from './components/DetailsView/DetailsView.jsx';
@@ -15,7 +14,7 @@ class RouterView extends Component {
     constructor() {
         super();
         this.state = {
-            activeItem: "search"
+            activeItem: PropTypes.string
         };
 
         this.handleSearchClick = this.handleSearchClick.bind(this);

@@ -22,11 +22,14 @@ class DetailsView extends Component {
 
     componentWillMount() {
         let movies = this.props.location.params.moviesList;
+        let moviesCount = (Object.keys(movies).length);
         let currIdx = this.props.location.query;
-        console.log("movie list received by details: " + this.props.location.params.moviesList);
-        console.log("index list received by details: " + this.props.location.query);
+        // console.log("total "+ moviesCount + " movies for details views");
+        // console.log("movie list received by details: " + this.props.location.params.moviesList);
+        // console.log("index list received by details: " + this.props.location.query);
 
         this.setState({
+            totalCount: moviesCount,
             movies: movies,
             currIdx:currIdx
         });
@@ -51,7 +54,6 @@ class DetailsView extends Component {
 
 
     clickLeftHandler(event, data) {
-        // let listSize = this.state.totalCount;
         if (this.state.currIdx !== 0) {
             let newIdx = (this.state.currIdx - 1);
             let newMovieId = this.state.movies[newIdx].id;
@@ -69,7 +71,7 @@ class DetailsView extends Component {
     }
 
     clickRightHandler(event, data) {
-        if (this.state.currIdx !== 100) { // ????
+        if (this.state.currIdx + 1 < this.state.totalCount) {
             let newIdx = (this.state.currIdx + 1);
             let newMovieId = this.state.movies[newIdx].id;
             this.setState({
@@ -86,7 +88,7 @@ class DetailsView extends Component {
 
     render() {
         let posterUrl = "https://image.tmdb.org/t/p/w90_and_h134_bestv2/" + this.state.currMovie.poster_path;
-        if (this.state.currMovie.poster_path === null) {
+        if (this.state.currMovie.poster_path === null || this.state.currMovie.poster_path === undefined) {
             posterUrl = '../../assets/no_img.jpg'
         }
 
@@ -105,12 +107,6 @@ class DetailsView extends Component {
                 <Button icon='settings' onClick={this.clickLeftHandler}/>
                 <Button floated='right' icon='settings' onClick={this.clickRightHandler}/>
             </Modal>
-
-
-
-
-
-
         )
     }
 }

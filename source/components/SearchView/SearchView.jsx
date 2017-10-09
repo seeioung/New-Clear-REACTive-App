@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import { Input, Dropdown, Form, Checkbox} from 'semantic-ui-react'
 import axios from 'axios'
 
@@ -12,8 +13,8 @@ class SearchView extends Component {
         this.state = {
             movieName: '',
             movies: {},
-            sortBy: 'Name',
-            sortIn: 'Ascending'
+            sortBy: '',
+            sortIn: ''
         };
 
         this.searchUrl = 'https://api.themoviedb.org/3/search/movie?api_key=2ba1defe49928fa3f6b38c04f378cd89&language=en-US';
