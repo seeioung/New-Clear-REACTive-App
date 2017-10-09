@@ -23,9 +23,9 @@ import React, { Component } from 'react'
 import {  Menu, Segment} from 'semantic-ui-react'
 import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
 
-import ListView from '../ListView/ListView.jsx';
-import GalleryView from '../GalleryView/GalleryView.jsx';
-import DetailsView from '../DetailsView/DetailsView.jsx';
+import ListView from './../ListView/ListView.jsx';
+import GalleryView from './../GalleryView/GalleryView.jsx';
+import DetailsView from './../DetailsView/DetailsView.jsx';
 
 import styles from '../../styles/RouterView.scss';
 

@@ -6,6 +6,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 // Include your new Components here
 import Home from './components/Home/Home.jsx';
+import RouterView from './RouterView.jsx'
 
 
 // Include any new stylesheets here
