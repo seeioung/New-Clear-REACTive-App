@@ -5,8 +5,6 @@ import axios from 'axios'
 
 import styles from './DetailsView.scss';
 
-import PokemonView from '../PokemonView/PokemonView.jsx';
-
 class DetailsView extends Component {
     constructor(props) {
         super(props);
