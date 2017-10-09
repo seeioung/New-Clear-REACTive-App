@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Input, Card, Image, Item, Icon, Modal, Header} from 'semantic-ui-react'
-import { Link} from 'react-router-dom'
+import { Button, Image, Icon, Modal, Header} from 'semantic-ui-react'
 import axios from 'axios'
 
 import styles from './DetailsView.scss';
@@ -14,8 +13,7 @@ class DetailsView extends Component {
             currMovie: {},
             currIdx:0
         };
-        //
-        // this.baseUrl = 'https://pokeapi.co/api/v2/pokemon/';
+
         this.updateDetails = this.updateDetails.bind(this);
         this.clickLeftHandler = this.clickLeftHandler.bind(this);
         this.clickRightHandler = this.clickRightHandler.bind(this);

@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import {  Menu, Segment} from 'semantic-ui-react'
+import {  Menu, Segment, Message} from 'semantic-ui-react'
 import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
 
 // import ListView from './components/ListView/ListView.jsx';
@@ -63,7 +63,13 @@ class RouterView extends Component {
                             <Route exact path='/gallery' component={GalleryView}/>
                             <Route path='/details/:value' component={DetailsView}/>
                             <Route render = {function(){
-                                return <h3>404 Not Found</h3>
+                                return (
+                                    <Message color='brown'>
+                                        <Message.Header>Welcome! Want to find a movie?</Message.Header>
+                                        <p>Go to <b>Movie Search</b> page to search for a movie.</p>
+                                        <p>Go to <b>Movie Gallery</b> page to check out movies from different genres.</p>
+                                    </Message>
+                                );
                             }}/>
                         </Switch>
                     </div>
