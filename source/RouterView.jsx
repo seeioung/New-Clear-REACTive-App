@@ -4,6 +4,7 @@ import {  Menu, Segment} from 'semantic-ui-react'
 import {BrowserRouter as Router, Route, Switch, Link, NavLink} from 'react-router-dom'
 
 // import ListView from './components/ListView/ListView.jsx';
+import SearchView from './components/SearchView/SearchView.jsx';
 import GalleryView from './components/GalleryView/GalleryView.jsx';
 import DetailsView from './components/DetailsView/DetailsView.jsx';
 
@@ -58,7 +59,7 @@ class RouterView extends Component {
 
                     <div>
                         <Switch>
-                            <Route exact path='/' component={GalleryView}/>
+                            <Route exact path='/' component={SearchView}/>
                             <Route exact path='/gallery' component={GalleryView}/>
                             <Route path='/details/:value' component={DetailsView}/>
                             <Route render = {function(){
