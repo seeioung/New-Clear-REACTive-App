@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Menu, Segment} from 'semantic-ui-react'
+import { Input, Dropdown, Form, Checkbox} from 'semantic-ui-react'
 import axios from 'axios'
 
 import styles from './SearchView.scss';
