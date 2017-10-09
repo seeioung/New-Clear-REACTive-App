@@ -60,7 +60,7 @@ class RouterView extends Component {
                     <div>
                         <Switch>
                             <Route exact path='/gallery' component={GalleryView}/>
-                            <Route exact path='/' component={ListView}/>
+                            <Route exact path='' component={ListView}/>
 
                             <Route path='/details/:value' component={DetailsView}/>
                             <Route render = {function(){
