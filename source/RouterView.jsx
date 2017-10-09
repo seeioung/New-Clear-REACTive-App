@@ -38,30 +38,17 @@ class RouterView extends Component {
         return(
             <Router>
                 <Segment className="container">
-                    <Menu className="menuContainer" inverted>
-                        <Menu.Item active={activeItem === 'search'}>
-                            <div id='search' onClick={this.handleSearchClick}>
-                                <NavLink exact className="nav-link" activeClassName="active" to="/" >
-                                    <span className="menuText">Movie Search</span>
-                                </NavLink>
-                            </div>
-                        </Menu.Item>
-
-                        <Menu.Item active={activeItem === 'gallery'}>
-                            <div onClick={this.handleGalleryClick}>
-                                <NavLink exact className="nav-link" activeClassName="active" to="/gallery">
-                                    <span className="menuText">Movie Gallery</span>
-                                </NavLink>
-                            </div>
-
-                        </Menu.Item>
-                    </Menu>
+                    <div className = "Nav">
+                        <Menu compact inverted size='large'>
+                            <Link to="/"><Menu.Item name='MovieSearch'/></Link>
+                            <Link to="/Gallery"><Menu.Item name='Gallery' /></Link>
+                        </Menu>
+                    </div>
 
                     <div>
                         <Switch>
+                            <Route exact path='/' component={ListView}/>
                             <Route exact path='/gallery' component={GalleryView}/>
-                            <Route exact path='' component={ListView}/>
-
                             <Route path='/details/:value' component={DetailsView}/>
                             <Route render = {function(){
                                 return <h3>404 Not Found</h3>

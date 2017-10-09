@@ -20,6 +20,6 @@ require('./styles/main.scss');
 
 render(
     // Define your router and replace <Home /> with it!
-    <RouterView></RouterView>,
+    <RouterView/>,
     document.getElementById('app')
 );
