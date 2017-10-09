@@ -1,0 +1,15 @@
+.moviesContainer{
+  //display: flex;
+  //flex-wrap: wrap;
+  //align-items: flex-start;
+  //align-content: flex-start;
+  .detailLink {
+    .galleryImage{
+      padding: 2px;
+      max-width: 20%;
+      width: 60%;
+      height: auto;
+      display: inline-block;
+    }
+  }
+}
