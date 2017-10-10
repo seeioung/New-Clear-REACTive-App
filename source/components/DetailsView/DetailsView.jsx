@@ -89,7 +89,7 @@ class DetailsView extends Component {
     render() {
         let posterUrl = "https://image.tmdb.org/t/p/w90_and_h134_bestv2/" + this.state.currMovie.poster_path;
         if (this.state.currMovie.poster_path === null || this.state.currMovie.poster_path === undefined) {
-            posterUrl = './../../assets/no_img.jpg'
+            posterUrl = 'assets/no_img.jpg'
         }
 
         return(

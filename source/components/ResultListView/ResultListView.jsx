@@ -23,7 +23,7 @@ class ResultListView extends Component {
         let resultListItems = this.props.resultList.map((result, idx) => {
             let posterUrl = "https://image.tmdb.org/t/p/w90_and_h134_bestv2/" + result.poster_path;
             if (result.poster_path === null) {
-                posterUrl = './../../assets/no_img.jpg'
+                posterUrl = 'assets/no_img.jpg'
             }
 
             let year = result.release_date + "";
