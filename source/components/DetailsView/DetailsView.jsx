@@ -84,14 +84,11 @@ class DetailsView extends Component {
         }
     }
 
-
-
     render() {
         let posterUrl = "https://image.tmdb.org/t/p/w90_and_h134_bestv2/" + this.state.currMovie.poster_path;
         if (this.state.currMovie.poster_path === null || this.state.currMovie.poster_path === undefined) {
-            posterUrl = 'assets/no_img.jpg'
+            posterUrl = './../../assets/no_img.jpg'
         }
-
         return(
             <Modal dimmer={false} open size='small'>
                 <Modal.Header>{this.state.currMovie.title}</Modal.Header>
@@ -104,8 +101,8 @@ class DetailsView extends Component {
                         <p>{this.state.currMovie.overview}</p>
                     </Modal.Description>
                 </Modal.Content>
-                <Button icon='settings' onClick={this.clickLeftHandler}/>
-                <Button floated='right' icon='settings' onClick={this.clickRightHandler}/>
+                <Button onClick={this.clickLeftHandler}>Prev</Button>
+                <Button floated='right' onClick={this.clickRightHandler}>Next</Button>
             </Modal>
         )
     }
