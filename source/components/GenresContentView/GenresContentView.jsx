@@ -19,7 +19,7 @@ class GenresContentView extends Component {
             let posterUrl = "https://image.tmdb.org/t/p/w370_and_h556_bestv2/" + result.poster_path;
 
             if (result.poster_path === null) {
-                posterUrl = './../../assets/no_img.jpg'
+                posterUrl = 'assets/no_img.jpg'
             }
 
             return (
