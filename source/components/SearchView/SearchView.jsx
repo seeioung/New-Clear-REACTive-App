@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import { Input, Dropdown, Form, Checkbox} from 'semantic-ui-react'
 import axios from 'axios'
 
@@ -8,8 +7,8 @@ import styles from './SearchView.scss';
 import ResultListView from "../ResultListView/ResultListView.jsx";
 
 class SearchView extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             movieName: '',
             movies: {},
@@ -157,6 +156,7 @@ class SearchView extends Component {
         )
     }
 }
+
 
 export default SearchView
 

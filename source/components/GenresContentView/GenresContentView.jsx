@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Image} from 'semantic-ui-react'
 import { Link} from 'react-router-dom'
-
+import PropTypes from 'prop-types';
 import styles from './GenresContentView.scss';
 
 class GenresContentView extends Component {
@@ -37,6 +37,10 @@ class GenresContentView extends Component {
         )
     }
 }
+
+GenresContentView.propTypes = {
+    moviesList: PropTypes.array
+};
 
 export default GenresContentView
 

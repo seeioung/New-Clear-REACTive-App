@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { List, Item, Segment} from 'semantic-ui-react'
 import {Link} from 'react-router-dom'
+import PropTypes from 'prop-types';
 import styles from './ResultListView.scss';
 
 class ResultListView extends Component {
@@ -56,5 +57,9 @@ class ResultListView extends Component {
         )
     }
 }
+
+ResultListView.propTypes = {
+    resultList: PropTypes.object
+};
 
 export default ResultListView

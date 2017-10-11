@@ -7,13 +7,13 @@ import styles from './GalleryView.scss';
 import GenresContentView from "../GenresContentView/GenresContentView.jsx";
 
 class GalleryView extends Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             activeItem: '',
             activeGenreId: 0,
             movieGenres: {},
-            movies: {}
+            movies: []
         };
 
         this.handleItemClick = this.handleItemClick.bind(this);
