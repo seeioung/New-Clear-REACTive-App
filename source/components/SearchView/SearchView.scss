@@ -4,6 +4,7 @@
 
 
   .searchContainer{
+    width: 100%;
     display: flex;
     justify-content: center;
 
@@ -13,13 +14,15 @@
     }
 
     .SortByDropdown{
+      text-align: left;
+      display: block;
       padding: 10px;
       .dropdown{
         //padding-left: 10px;
         //width:120px;
         //height: 30px;
       }
-      width: 20%;
+      width: 30%;
     }
   }
 
